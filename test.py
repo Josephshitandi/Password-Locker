@@ -23,10 +23,17 @@ class TestUser(unittest.TestCase):
     
     def test_save_user(self):
         '''
-        Test to check if the new users info is saved into the users list
+        Test to check if the new users info is saved into the user list
         '''
         self.new_user.save_user()
         self.assertEqual(len(User.user_list),1)
+        
+    def tearDown(self):
+        '''
+        tearDown method that does clean up after each test case has run.
+        '''
+        User.user_list = []   
+    
         
         
         
