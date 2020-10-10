@@ -1,6 +1,7 @@
 import unittest # Importing the unittest module
 from user import User
 from credentials import Credentials
+import pyperclip
 
 class TestUser(unittest.TestCase):
     '''
@@ -63,7 +64,7 @@ class TestCredentials(unittest.TestCase):
         '''
         
         self.new_credential.save_credentials()
-        self.assertEqual(len(Credentials.credential_list),2)
+        self.assertEqual(len(Credentials.credential_list),6)
     
     def test_delete_credentials(self):
         '''
@@ -74,7 +75,7 @@ class TestCredentials(unittest.TestCase):
         test_credential.save_credentials()
 
         self.new_credential.delete_credentials()# Deleting a credential object
-        self.assertEqual(len(Credentials.credential_list),1)
+        self.assertEqual(len(Credentials.credential_list),3)
     
     def test_save_multiple_credential(self):
             '''
@@ -84,7 +85,7 @@ class TestCredentials(unittest.TestCase):
             self.new_credential.save_credentials()
             test_credential = Credentials("Joseph","Instagram","123456") # new credential
             test_credential.save_credentials()
-            self.assertEqual(len(Credentials.credential_list),4)
+            self.assertEqual(len(Credentials.credential_list),8)
 
     def test_display_all_credentials(self):
         '''
@@ -92,10 +93,43 @@ class TestCredentials(unittest.TestCase):
         '''
 
         self.assertEqual(Credentials.display_credentials(),Credentials.credential_list)
-   
-   
-   
-   
+        
+    def test_find_credential_by_account_name(self):
+        '''
+        test to check if we can find a credential by account_name and display information
+        '''
+
+        self.new_credential.save_credentials()
+        test_credential = Credentials("Joseph","Instagram","123456") # new credential
+        test_credential.save_credentials()
+
+        found_credential = Credentials.find_by_account_name("Instagram")
+
+        self.assertEqual(found_credential.account_name,test_credential.account_name)
+            
+            
+    def test_credential_exists(self):
+            '''
+            test to check if we can return a Boolean  if we cannot find the credential.
+            '''
+
+            self.new_credential.save_credentials()
+            test_credential = Credentials("Joseph","Instagram","123456") # new credential
+            test_credential.save_credentials()
+
+            credential_exists = Credentials.credential_exist("Instagram")
+
+            self.assertTrue(credential_exists)
+    
+    # def test_copy_account_name(self):
+    #     '''
+    #     Test to confirm that we are copying the account_name from a found credential
+    #     '''
+
+    #     self.new_credential.save_credentials()
+    #     Credentials.find_by_account_name("Instagram")
+
+    #     self.assertEqual(self.new_credential.account_name,pyperclip.paste())
         
         
         

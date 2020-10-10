@@ -1,3 +1,5 @@
+import pyperclip #importing pyperclip for copying to clipboard
+
 class User:
     '''
     class that allows user to generate user account

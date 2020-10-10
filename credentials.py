@@ -1,6 +1,7 @@
 from user import User
 import random #import random variable generator
 import string  #import string constants
+import pyperclip
 
 
 class Credentials:
@@ -52,6 +53,38 @@ class Credentials:
         password_gen=''.join(random.choice(char) for _ in range(size))
         return password_gen
 
+
+    @classmethod
+    def find_by_account_name(cls, account_name):
+        '''
+        Method that takes in a account_name and returns a credential that matches that account_name.
+
+        Args:
+            account_name: Phone account_name to search for
+        Returns :
+            Credential of person that matches the account_name.
+        '''
+
+        for credential in cls.credential_list:
+            if credential.account_name == account_name:
+                return credential
+
+    @classmethod
+    def credential_exist(cls, account_name):
+        '''
+        Method that checks if a credential exists from the credential list.
+        Args:
+            account_name:  account_name to search if it exists
+        Returns :
+            Boolean: True or false depending if the credential exists
+        '''
+        for credential in cls.credential_list:
+            if credential.account_name == account_name:
+                return True
+
+        return False
+
+
     @classmethod
     def display_credentials(cls):
         '''
@@ -59,33 +92,11 @@ class Credentials:
         '''
         return cls.credential_list
 
+    # @classmethod
+    # def copy_account_name(cls, account_name):
+    #     credential_found = Credentials.find_by_account_name(account_name)
+    #     pyperclip.copy(credential_found.account_name)
 
-
-	# @classmethod
-	# def find_by_site_name(cls, site_name):
-	# 	'''
-	# 	Method that takes in a site_name and returns a credential that matches that site_name.
-	# 	'''
-	# 	for credential in cls.credentials_list:
-	# 		if credential.site_name == site_name:
-	# 			return credential
-	# 	return False
-
-	# @classmethod
-	# def copy_credential(cls,site_name):
-	# 	'''
-	# 	Method that copies a credential to the clipboard.
-	# 	'''
-	# 	try:
-	# 		find_credential = Credential.find_by_site_name(site_name)
-	# 		print(f'Your Password for {site_name} has been copied. You can paste it anywhere now.')
-	# 		return pyperclip.copy(find_credential.password)
-	# 		time.sleep(10)
-	# 		pyperclip.copy("")
-	# 		print("Password destroyed from clipboard")
-			
-	# 	except 	AttributeError: 
-	# 		return "Invalid site name" 
 
         
         
