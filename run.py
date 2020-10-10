@@ -1,6 +1,9 @@
 import pyperclip
 from user import User
 from credentials import Credentials
+import random #import random variable generator
+import string  #import string constants
+
 
 def create_user(user_name,password):
     '''
@@ -36,5 +39,26 @@ def check_existing_account(account_name):
     Function that checks if ctredential exists
     '''
     return Credentials.find_by_account_name(account_name)
+
+def generate_password():
+    '''
+    Function that generates password automatically
+    '''
+    password_generated = Credentials.generate_password()
+    return password_generated
+
+def save_credentials(credential):
+    '''
+    Function that saves new credential
+    '''
+    Credentials.save_credentials(credential)
+    
+def delete_credential(credential):
+    '''
+    Function that deletes a credential
+    '''
+    Credentials.delete_credentials(credential)
+    
+
 
 
