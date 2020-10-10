@@ -1,3 +1,5 @@
+from user import User
+
 class Credentials:
     '''
     Class to create  account credentials, generate new passwords and save user information
@@ -27,5 +29,17 @@ class Credentials:
 
         Credentials.credential_list.remove(self)        
         
+    @classmethod
+    def check_user(cls,user_name,password):
+        '''
+        Method that checks if the name and password entered exist in the users_list
+        '''
+        current_user = ''
+        for user in User.user_list:
+        	if (user.user_name == user_name and user.password == password):
+        		current_user = user.user_name
+        return current_user
+
+
         
         

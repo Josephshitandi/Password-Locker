@@ -78,13 +78,14 @@ class TestCredentials(unittest.TestCase):
     
     def test_save_multiple_credential(self):
             '''
-            test_save_multiple_credential to check if we can save multiple credential
+            test_save_multiple_credential to check if we can save multiple credentials
             objects to our credential_list
             '''
             self.new_credential.save_credentials()
             test_credential = Credentials("Joseph","Instagram","123456") # new credential
             test_credential.save_credentials()
             self.assertEqual(len(Credentials.credential_list),4)
+
 
    
    
