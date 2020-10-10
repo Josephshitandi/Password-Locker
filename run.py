@@ -69,4 +69,28 @@ def display_credential(credentials):
     '''
     Function that displays saved credentials
     '''
-    return Credentials.display_credentials(credentials)
+    return Credentials.display_credentials()
+
+def main():
+    print(' ')
+    print('Hello! Welcome to password Locker')
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+if __name__ == '__main__':
+	main()
