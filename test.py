@@ -64,7 +64,7 @@ class TestCredentials(unittest.TestCase):
         '''
         
         self.new_credential.save_credentials()
-        self.assertEqual(len(Credentials.credential_list),6)
+        self.assertEqual(len(Credentials.credential_list),7)
     
     def test_delete_credentials(self):
         '''
@@ -75,7 +75,7 @@ class TestCredentials(unittest.TestCase):
         test_credential.save_credentials()
 
         self.new_credential.delete_credentials()# Deleting a credential object
-        self.assertEqual(len(Credentials.credential_list),3)
+        self.assertEqual(len(Credentials.credential_list),4)
     
     def test_save_multiple_credential(self):
             '''
@@ -85,7 +85,7 @@ class TestCredentials(unittest.TestCase):
             self.new_credential.save_credentials()
             test_credential = Credentials("Joseph","Instagram","123456") # new credential
             test_credential.save_credentials()
-            self.assertEqual(len(Credentials.credential_list),8)
+            self.assertEqual(len(Credentials.credential_list),9)
 
     def test_display_all_credentials(self):
         '''
@@ -121,15 +121,15 @@ class TestCredentials(unittest.TestCase):
 
             self.assertTrue(credential_exists)
     
-    # def test_copy_account_name(self):
-    #     '''
-    #     Test to confirm that we are copying the account_name from a found credential
-    #     '''
+    def test_copy_account_name(self):
+        '''
+        Test to confirm that we are copying the account_name from a found credential
+        '''
 
-    #     self.new_credential.save_credentials()
-    #     Credentials.find_by_account_name("Instagram")
+        self.new_credential.save_credentials()
+        Credentials.find_by_account_name("Instagram")
 
-    #     self.assertEqual(self.new_credential.account_name,pyperclip.paste())
+        self.assertEqual(self.new_credential.account_name,pyperclip.paste())
         
         
         

@@ -46,7 +46,7 @@ class Credentials:
 
  
 
-    def generate_password(self,size=10, char=string.ascii_uppercase+string.ascii_lowercase+string.digits):
+    def generate_password( size=10, char=string.ascii_uppercase+string.ascii_lowercase+string.digits):
         '''
         Function to generate a secure 10 character password for a user.
         '''
