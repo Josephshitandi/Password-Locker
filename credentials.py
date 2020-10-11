@@ -44,16 +44,6 @@ class Credentials:
         		current_user = user.user_name
         return current_user
 
- 
-
-    def generate_password( size=10, char=string.ascii_uppercase+string.ascii_lowercase+string.digits):
-        '''
-        Function to generate a secure 10 character password for a user.
-        '''
-        password_gen=''.join(random.choice(char) for _ in range(size))
-        return password_gen
-
-
     @classmethod
     def find_by_account_name(cls, account_name):
         '''
@@ -92,10 +82,10 @@ class Credentials:
         '''
         return cls.credential_list
 
-    # @classmethod
-    # def copy_account_name(cls, account_name):
-    #     credential_found = Credentials.find_by_account_name(account_name)
-    #     pyperclip.copy(credential_found.account_name)
+    @classmethod
+    def copy_credentials(cls, account_name):
+        credential_found = Credentials.find_by_account_name(account_name)
+        pyperclip.copy(credential_found.account_name)
 
 
         

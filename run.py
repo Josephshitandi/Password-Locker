@@ -40,11 +40,12 @@ def check_existing_account(account_name):
     '''
     return Credentials.find_by_account_name(account_name)
 
-def generate_password():
+def generate_password(length = 10):
     '''
     Function that generates password automatically
     '''
-    password_generated = Credentials.generate_password()
+    letters = string.ascii_lowercase
+    password_generated = ''.join(random.choice(letters) for i in range(length))
     return password_generated
 
 def save_credentials(credential):
@@ -66,6 +67,12 @@ def find_credential(account_name):
     return Credentials.find_by_account_name(account_name)
 
 def display_credential(credentials):
+    '''
+    Function that displays saved credentials
+    '''
+    return Credentials.display_credentials()
+
+def copy_credentials(credentials):
     '''
     Function that displays saved credentials
     '''
@@ -206,7 +213,7 @@ def main():
                     elif short_code == 'copy':
                         print(' ')
                         account_name = input('Enter the account name for the credential password to copy: ')
-                        copy_credential(account_name)
+                        copy_credentials(account_name)
                         print('\n')
                     else:
                         print('Wrong option entered. Try again!')
